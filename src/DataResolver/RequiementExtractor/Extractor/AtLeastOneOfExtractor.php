@@ -26,7 +26,7 @@ class AtLeastOneOfExtractor extends AbstractExtractor
         }
 
         return [
-            'one_of' => (new RequiementExtractor(...$constraints))->extract()
+            'one_of' => (new RequiementExtractor($constraints))->extract()
         ];
     }
 }

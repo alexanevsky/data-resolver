@@ -12,7 +12,7 @@ class AllExtractor extends AbstractExtractor
     public function extract(): array
     {
         return [
-            'each' => (new RequiementExtractor(...$this->constraint->constraints))->extract()
+            'each' => (new RequiementExtractor($this->constraint->constraints))->extract()
         ];
     }
 }
