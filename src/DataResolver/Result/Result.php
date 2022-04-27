@@ -11,7 +11,7 @@ use Symfony\Component\Validator\ConstraintViolationInterface;
 use Symfony\Component\Validator\Validation;
 use function Symfony\Component\String\u;
 
-class Result implements \ArrayAccess, \Countable
+class Result
 {
     /**
      * The resolver in witch this result was called.
@@ -152,26 +152,6 @@ class Result implements \ArrayAccess, \Countable
     public function getResolver(): Resolver
     {
         return $this->resolver;
-    }
-
-    public function offsetGet($name)
-    {
-        return $this->get($name);
-    }
-
-    public function offsetExists($name): bool
-    {
-        return isset($this->data[$name]);
-    }
-
-    public function offsetSet($name, $value): void
-    {
-        throw new \Exception('Setting options via array access is not supported.');
-    }
-
-    public function offsetUnset($name): void
-    {
-        throw new \Exception('Removing options via array access is not supported.');
     }
 
     /**
