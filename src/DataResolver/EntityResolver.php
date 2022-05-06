@@ -5,6 +5,7 @@ namespace Alexanevsky\DataResolver;
 use Alexanevsky\DataResolver\Exception\InvalidConfigurationException;
 use Alexanevsky\DataResolver\Option\EntityOption;
 use Alexanevsky\DataResolver\Result\EntityResult;
+use Doctrine\Common\Collections\Collection;
 use function Symfony\Component\String\u;
 
 class EntityResolver extends Resolver
@@ -100,6 +101,10 @@ class EntityResolver extends Resolver
 
             if ($option->hasGetterNormalizer()) {
                 $default = $option->getGetterNormalizer()($default);
+            }
+
+            if ($default instanceof Collection) {
+                $default = $default->toArray();
             }
 
             $option->setDefault($default);
